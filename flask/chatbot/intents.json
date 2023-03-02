@@ -1,0 +1,116 @@
+{"intents": [
+  {"tag": "salam",
+  "patterns": ["hello","hey","hai","halo","Assalamualaikum","hola","hi"],
+  "responses": ["Hello!","Hai!","Waalaikumsalam","Ada yang bisa dibantu?"]
+  },
+
+  {"tag": "nama",
+  "patterns": ["siapa namamu","nama","nama kamu","siapa","kamu siapa"],
+  "responses": ["Anda bisa panggil saya Cibot","Saya Cibot","Saya Cibot, sebuah virtual asisten"]
+  },
+
+  {"tag": "cara",
+  "patterns": ["Bagaimana cara menggunakan aplikasi?", "cara penggunaan"],
+  "responses": ["Anda bisa pilih fitur kamera, kemudian scan wajah anda untuk mengetahui model rambut yang cocok untuk anda"]
+  },
+
+  {"tag": "potongan",
+  "patterns": ["apa saja potongan rambut yang formal?" ,"potongan rambut formal"],
+  "responses": ["Side Parted\n Quiff\n FauxHawk\n Undercut\n Buzzcut"]
+  },
+
+   {"tag": "aplikasi",
+  "patterns": ["aplikasi hair style recommendation itu apa", "ini aplikasi apa"],
+  "responses": ["Aplikasi Hair style recommendation adalah aplikasi yang digunakan untuk mempermudah dalam memilih model potongan rambut yang cocok untuk customer"]
+  },
+
+   {"tag": "hasil",
+  "patterns": ["hasil","melihat hasil","cara melihat hasil rekomendasi"],
+  "responses": ["Hasil rekomendasi model rambut anda dapat di lihat setelah anda melakukan scan wajah."]
+  },
+
+  {"tag": "apa",
+  "patterns": ["apa itu hairstyle","hairstyle apa"],
+  "responses": ["Hairstyle adalah model potongan rambut atau gaya rambut yang unik."]
+  },
+
+  {"tag": "saran",
+  "patterns": ["saran model","model potongan apa saja yang disarankan"],
+  "responses": ["Ada banyak model rambut seperti : Side Parted\nUndercut\nFringe Up\nLong Fringes\nPushed Back\nFauxHawk\nQuiff\nSide Fringe\nBuzzcut."]
+  },
+
+  {"tag": "tentukan",
+  "patterns": ["potongan rambut ditentukan berdasarkan apa","cara menentukkan potongan rambut","menentukkan potongan"],
+  "responses": ["Potongan rambut ditentukkan otomatis oleh sistem berdasarkan bentuk wajah"]
+  },
+
+  {"tag": "fungsi",
+  "patterns": ["fungsi aplikasi","aplikasi ini berfungsi untuk apa?"],
+  "responses": ["Fungsi aplikasi Hairstye Recommendation adalah untuk membantu customer dalam menentukkan model potongan rambut yang cocok"]
+  },
+
+  {"tag": "tebal",
+  "patterns": ["untuk rambut tebal", "rambut pria tebal cocoknya potong apa?"],
+  "responses": ["Quiff\n Undercut\n Fringe Up"]
+  },
+
+  {"tag": "sideparted",
+    "patterns": ["side parted", "model rambut side parted", "apa itu side parted"],
+    "responses": ["Side parted adalah model rambut dengan cukuran tipis di bagian samping dan rambut bagian atas dibiarkan agak panjang lalu di-styling dengan belahan menyamping."]
+  },
+
+  {"tag": "undercut",
+    "patterns": ["Undercut", "model rambut undercut", "apa itu undercut"],
+    "responses": ["Model rambut undercut adalah model yang memisahkan bagian atas rambut dengan bagian bawah dan samping"]
+  },
+
+  {"tag": "fringeup",
+    "patterns": ["Fringe Up", "model rambut fringe up", "apa itu model rambut fringe up?"],
+    "responses": ["Model rambut fringe up adalah model rambut poni dengan bagian depan atas yang lebih membumbung atau bervolume"]
+  },
+
+  {"tag": "longfringes",
+    "patterns": ["Long Fringes", "model rambut long fringes", "apa itu model rambut long fringes?"],
+    "responses": ["Model rambut fringe up adalah model rambut berponi panjang dengan belah tengah"]
+  },
+
+  {"tag": "Pushed",
+    "patterns": ["Pushed back", "model rambut pushed back", "apa itu model rambut pushed back?"],
+    "responses": ["Model rambut pushed back adalah model rambut yang menyisir rambut ke arah belakang agar tidak menutupi fitur wajah"]
+  },
+
+  {"tag": "faux",
+    "patterns": ["Faux Hawk", "model rambut faux hawk", "apa itu model rambut faux hawk?"],
+    "responses": ["Model rambut faux hawk adalah model rambut dibiarkan agak panjang di bagian tengah, sedangkan bagian kiri dan kanan dipotong rapi serta lebih pendek"]
+  },
+
+  {"tag": "quiff",
+    "patterns": ["Quiff", "model rambut quiff", "apa itu model rambut quiff?"],
+    "responses": ["Model rambut quiff adalah potongan yang pendek dan rapi, dengan bagian depan atas yang lebih membumbung atau bervolume"]
+  },
+
+  {"tag": "Sidefringe",
+    "patterns": ["Side Fringe", "model rambut side fringe", "apa itu model rambut side fringe?"],
+    "responses": ["Model rambut side fringe adalah model rambut pendek yang dipadukan dengan model rambut poni menyamping"]
+  },
+
+  {"tag": "buzzcut",
+    "patterns": ["buzzcut", "model rambut buzzcut", "apa itu model rambut buzzcut?"],
+    "responses": ["Model rambut buzzcut adalah model rambut pendek yang dipotong menggunakan clipper. Panjangnya biasanya tidak lebih dari 2cm"]
+  },
+
+  {"tag": "goodbye",
+  "patterns": ["dadah","see you","Goodbye","babay","sayonara","bye","see ya"],
+  "responses": ["See you!","Bye","Goodbye"]
+  },
+
+  {"tag": "invalid",
+    "patterns": ["","gvsd","asbhk"],
+    "responses": ["Maaf, saya tidak mengerti", "Kata kunci tidak valid", "Saya tidak paham"]
+  },
+
+  {"tag": "thanks",
+    "patterns": ["thanks", "Thank you", "terimakasih", "makasih", "terimaksih untuk bantuannya"],
+    "responses": ["Senang membantumu", "Terimakasi Kembali", "Yap!"]
+  }
+]}

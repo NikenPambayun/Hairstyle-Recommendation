@@ -1,0 +1,92 @@
+{% if session.login %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendation History</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='/vendor/bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+    <script src="https://kit.fontawesome.com/6e843ddcb5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar bg-second container-fluid navbar-expand-lg py-2 mb-2">
+        <div class="container">
+          <a class="navbar-brand text-white" href="#">T.R. Barbershop</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link text-white" aria-current="page" href="{{ url_for('dashboard') }}">Home</a>
+              <a class="nav-link text-white" aria-current="page" href="{{ url_for('hairstyle_hist') }}">Hairstyle History</a>
+              <a class="nav-link text-white" aria-current="page" href="{{ url_for('chat_hist') }}">Chat History</a>
+              <a class="nav-link text-white" href="{{ url_for('logout') }}">Logout</a>
+            </div>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-sm-12 col-md-4">
+                <form action="" class="d-flex" method="POST">
+                    <input type="date" class="form-control me-2" name="filterTanggal" id="filterTanggal">
+                    <button type="submit" class="btn btn-secondary">Filter</button>
+                </form>
+            </div>
+        </div>
+        <div class="row table-responsive" style="padding: 12px 12px 0 12px;">
+            <table class="table">
+                <thead class="table-light">
+                    <td>No</td>
+                    <td>Photo</td>
+                    <td>Recomendation</td>
+                    <td>Timestamp</td>
+                </thead>
+                <tbody>
+                    {% if recomendation|length %}
+                        {% for r in recomendation %}
+                            <tr>
+                                <td>{{loop.index}}</td>
+                                <td>
+                                    <img src="/static/images/uploads/{{ r[1] }}" height="200" width="150" alt="" srcset="">
+                                </td>
+                                <td>
+                                    {% for g in r[2].split(',') %}
+                                        <img src="/static/images/rekomendasi/{{g}}" height="200" width="150" alt="" srcset="">
+                                    {% endfor %}
+                                </td>
+                                <td>{{r[3]}}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                Data Kosong
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', ()=>{
+            const filterTanggal = document.getElementById('filterTanggal');
+            const tanggal = new Date()
+            filterTanggal.value = tanggal.toISOString().split('T')[0];
+            console.log(tanggal.toISOString().split('T')[0]);
+        })
+    </script>
+</body>
+</html>
+{% endif %}

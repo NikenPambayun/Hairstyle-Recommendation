@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.color-utama {
+    color: rgba(255, 225, 210, 210);
+}
+
+
+.bg-utama {
+    background-color: rgba(255, 225, 210, 210);
+}
+
+.bg-second {
+    background-color: rgba(139, 69, 19, 1);
+}
+
+.card-login {
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 100%;
+}

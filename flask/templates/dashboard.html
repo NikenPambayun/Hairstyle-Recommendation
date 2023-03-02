@@ -1,0 +1,138 @@
+{% if session.login %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='/vendor/bootstrap/css/bootstrap.css') }}">
+    <script src="https://kit.fontawesome.com/6e843ddcb5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar bg-second container-fluid navbar-expand-lg py-2 mb-2">
+        <div class="container">
+          <a class="navbar-brand text-white" href="#">T.R. Barbershop</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link text-white" aria-current="page" href="{{ url_for('dashboard') }}">Home</a>
+              <a class="nav-link text-white" aria-current="page" href="{{ url_for('hairstyle_hist') }}">Hairstyle History</a>
+              <a class="nav-link text-white" aria-current="page" href="{{ url_for('chat_hist') }}">Chat History</a>
+              <a class="nav-link text-white" href="{{ url_for('logout') }}">Logout</a>
+            </div>
+          </div>
+        </div>
+    </nav>
+
+<div class="container">
+    <div class="toast-container position-fixed start-50 top-10 translate-middle">
+        <div id="liveToast" class="toast text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 mb-3 d-flex justify-content-center">
+        <div class="col-sm-12 col-md-4">
+            <form action="" class="d-flex" method="POST">
+                <input type="month" min="2022-01" value="2023-01" class="form-control me-2" name="filterBulan" id="filterBulan">
+                <button type="submit" class="btn btn-secondary">Filter</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <script>
+                    const option = {"autohide": true, timeout:1500};
+                    const toastBody = document.querySelector('.toast-body')
+                    const toastLiveExample = document.getElementById('liveToast')
+                    toastBody.innerHTML = "{{ message }}";
+                    let toast = new bootstrap.Toast(toastLiveExample, option);
+                    toast.show();
+                </script>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <script>
+        const label = [];
+        const data = [];
+        let temp = {}
+    </script>
+        {% for h in range(1, jumlahHari + 1) %}
+                <script>
+                    temp = {
+                        'hari': '{{h}}',
+                        'jumlah': '0'
+                    }
+                    data.push(temp)
+                </script>
+        {% endfor %}
+
+        {% for hr, dt in data %}
+                <script>
+                    temp = {
+                        'hari': '{{hr}}',
+                        'jumlah': '{{dt}}'
+                    }
+                    data['{{hr}}' - 1] = temp
+                </script>
+        {% endfor %}
+
+    <script>
+        
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.map(row => row.hari),
+            datasets: [{
+            label: 'Jumlah',
+            data: data.map(row => row.jumlah),
+            borderColor: '#000',
+            backgroundColor: '#030303',
+            fill: false,
+            borderWidth: 1
+            }]
+        },
+        options: {
+                plugins: {
+                    filler: {
+                        propagate: false,
+                    },
+                    title: {
+                        display: false,
+                        text: (ctx) => 'Fill: ' + ctx.chart.data.datasets[0].fill
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
+{% endif %}

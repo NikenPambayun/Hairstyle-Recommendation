@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='/vendor/bootstrap/css/bootstrap.css') }}">
+    <script src="https://kit.fontawesome.com/6e843ddcb5.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-utama">
+    <div class="toast-container position-fixed start-50 translate-middle" style="top: 30px;">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body border-0">
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card card-login" style="background-color: rgba(139, 69, 19, 1);width: 30%;">
+          <div class="card-body px-4 py-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="img-login d-flex justify-content-center">
+                        <img src="{{ url_for('static', filename='/images/3.1.png') }}" class="h-75 w-75 d-inline-block" alt="" srcset="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="class-md-12">
+                    <form action="{{ url_for('login') }}" class="form-floating" method="POST">
+                         <div class="form-floating">
+                             <input type="username" name="username" class="form-control mb-3 h-75" id="floatingInputUsername" placeholder="username...">
+                             <label for="floatingInputUsername">Username</label>
+                         </div>
+
+                         <div class="form-floating">
+                             <input type="password" class="form-control mb-3 h-75" name="password" id="floatingInputPassword" placeholder="password...">
+                             <label for="floatingInputPassword">password</label>
+                         </div>
+        
+
+                      <button type="submit" id="login" class="btn btn-primary w-100 rounded-3">Login</button>
+
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- scripts -->
+    <script src="{{ url_for('static', filename='/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <script>
+                    const option = {"autohide": true, timeout:1500};
+                    const toastBody = document.querySelector('.toast-body')
+                    const toastLiveExample = document.getElementById('liveToast')
+                    const category = '{{category}}'
+                    if (category == 'danger') {
+                        toastLiveExample.classList.add('text-bg-danger')
+                    }
+                    toastBody.innerHTML = "{{ message }}";
+                    let toast = new bootstrap.Toast(toastLiveExample, option);
+                    toast.show();
+                </script>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</html>
